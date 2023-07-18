@@ -14,6 +14,9 @@ app.use(cors())
 const Signup = require('./route/signup')
 app.use(Signup)
 
+const Login = require('./route/login')
+app.use(Login)
+
 
 sequelize.
 sync().then(result=>{
