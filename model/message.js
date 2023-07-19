@@ -11,6 +11,11 @@ const Message = sequelize.define('message',{
          type : Sequelize.STRING,
          allowNull : false,
     
-    }
+    },
+    Username:{
+    type : Sequelize.STRING,
+    allowNull : false,
+
+},
 })
 module.exports=Message

@@ -16,8 +16,10 @@ async function save(event)
         const response = await axios.post("http://localhost:3000/login",object)
         console.log(response)
         const tokens = response.data.token
+        const uname =  response.data.name
         console.log(tokens)
         localStorage.setItem("token",tokens)
+        localStorage.setItem("name",uname)
         alert(response.data.message)
         window.location.href="../HTML/chat.html"
     }

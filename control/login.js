@@ -20,7 +20,7 @@ exports.VerifyUser= async(req,res,next)=>{
         const id = user.id
       if (result== true) {
         const token = jwt.sign({id},'secret')
-        return res.status(200).json({message :"Loogged in Succesfully" , token:token})
+        return res.status(200).json({message :"Loogged in Succesfully" , token:token, name:user.Username})
       } else {
         return res.status(401).json("Password does not match");
       }
