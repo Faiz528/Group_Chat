@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+    background-color: #9591b4;
 }
 .background{
     width: 430px;
@@ -16,6 +16,16 @@ body{
     left: 50%;
     top: 50%;
 }
+h1{
+    display: flex;
+    justify-content: center;
+    }
+    h3 {
+        display: flex;
+        margin: 27px 612px;
+        text-align: left;
+        background-color: #ff512f;
+    }
 .background .shape{
     height: 200px;
     width: 200px;
