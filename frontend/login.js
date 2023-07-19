@@ -1,5 +1,4 @@
 const log = document.getElementById('log')
-const bcrypt = require('bcrypt')
 log.addEventListener('submit',save)
 
 async function save(event)
@@ -14,10 +13,15 @@ async function save(event)
     }
     var object ={email , password}
     try{
-        const response = await axios.get("http://localhost:3000/login",object)
+        const response = await axios.post("http://localhost:3000/login",object)
+        console.log(response)
+        const tokens = response.data.token
+        alert(response.data.message)
     }
     catch(err)
     {
-
+        console.log(err.response.data)
+        alert(err.response.data)
+        
     }
 }
