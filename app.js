@@ -5,7 +5,11 @@ const sequelize = require('./util/database')
 const cors = require('cors')
 const axios = require('axios')
 const User = require('./model/user')
+const Message = require('./model/message')
+app.use(cors())
 
+User.hasMany(Message)
+Message.belongsTo(User)
 
 
 app.use(Parser.json({extended:false}))
@@ -16,6 +20,9 @@ app.use(Signup)
 
 const Login = require('./route/login')
 app.use(Login)
+
+const Chat = require("./route/chat")
+app.use(Chat)
 
 
 sequelize.
