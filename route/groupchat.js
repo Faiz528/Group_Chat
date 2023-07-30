@@ -7,7 +7,7 @@ const auth = require('../middleware/auth.js')
 route.post('/chats',auth.authenticate,Group.Postmsg)
 route.get('/chats',Group.Getmsg)
 route.post('/addmember',Group.AddUser)
-route.get('/getparticipants',Group.getMember)
+route.get('/getparticipants',auth.authenticate,Group.getMember)
 
-//route.get('/chat',auth.authenticate,Chat.GetAllChats)
+route.post('/deleteParticipant',auth.authenticate,Group.DeleteUser)
 module.exports= route
