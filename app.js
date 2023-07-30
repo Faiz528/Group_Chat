@@ -6,14 +6,22 @@ const cors = require('cors')
 const axios = require('axios')
 const User = require('./model/user')
 const Message = require('./model/message')
+const Group = require('./model/group')
 app.use(cors())
 
 User.hasMany(Message)
 Message.belongsTo(User)
 
+Group.hasMany(Message)
+Message.belongsTo(Group)
+
+const UserGroup = sequelize.define('UserGroup', {});
+User.belongsToMany(Group,{through:UserGroup})
+Group.belongsToMany(User,{through:UserGroup})
+
 
 app.use(Parser.json({extended:false}))
-app.use(cors())
+
 
 const Signup = require('./route/signup')
 app.use(Signup)
@@ -23,6 +31,9 @@ app.use(Login)
 
 const Chat = require("./route/chat")
 app.use(Chat)
+
+const GroupChat = require("./route/groupchat")
+app.use(GroupChat)
 
 
 sequelize.

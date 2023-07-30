@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./group.css">
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <h1>Group Chat</h1>
+
+  <div id="user-list">
+    <h3>Participants:</h3>
+    <ul id="participants">
+    
+    </ul>
+  </div>
+
+  <div id="chatBox">
+    <!-- Chat messages will be dynamically added here -->
+    
+  </div>
+  <div id ="members">
+      <input type="text"id="participantName">
+      <button type="submit" class="button-34" onclick="addParticipant()">Add Member</button>
+
+  </div>
+
+  <div id ="speak">
+    <input type="text" id ="msg">
+    <button type="submit" id="send">Send</button>
+</div>
+  <script src="../frontend/groupchat.js"></script>
+  <script  src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@ exports.authenticate = (req,res,next)=>{
     try{
         
         const token = req.header("Authorization")
-        console.log(token)
+        
         const userid = jwt.verify(token,'secret').id
         User.findByPk(userid).then(user=>{
             console.log(JSON.stringify(user))

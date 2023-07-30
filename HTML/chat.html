@@ -5,16 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Chat</title>
     <link rel="stylesheet" href="./style1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     <h1>GROUP CHAT</h1>
     <h2 id="user"></h2>
+    <button class="button-34" role="button" id="openPopupButton">Create Group</button>
 
-    <div id="chat-container"></div>
+    <div id="chat-container"></div> 
     <div id ="speak">
         <input type="text" id ="msg">
         <button type="submit" id="send">Send</button>
     </div>
+    <div id="popupContainer">
+        <div class="popupContent">
+            <h3>Enter the name</h3>
+            
+            <input type="text" id="nameInput" placeholder="Group Name">
+            <button id="saveButton">Save</button>
+            <button id="closePopupButton">Close</button>
+        </div>
+    </div>
+    <div id="groupContainer">
+        <h2>GROUPS</h2>
+        <!-- Dynamic groups will be added here -->
+    </div>
+
 
     <script src="../frontend/chat.js"></script>
     <script  src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
