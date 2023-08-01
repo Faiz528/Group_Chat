@@ -23,14 +23,14 @@ let chatMessages = []; // Variable to store chat messages locally
 
 user.textContent = "Welcome " + names;
 console.log(token);
-send.addEventListener('click', save);
+//send.addEventListener('click', save);
 async function refreshChat() {
   try {
-    const response = await axios.get("http://localhost:3000/chat", {
+    /*const response = await axios.get("http://localhost:3000/chat", {
       headers: {
         'Authorization': token
       }
-    });
+    });*/
     const group = await axios.get("http://localhost:3000/newgroup", {
       headers: {
         'Authorization': token
@@ -42,23 +42,23 @@ async function refreshChat() {
       displayGroup(groups);
     }
     
-    const messagesFromServer = response.data.messages;
+    /*const messagesFromServer = response.data.messages;
     console.log(messagesFromServer);
     chatContainer.innerHTML = ''; // Clear the chat container before displaying new messages
 
     for (const message of messagesFromServer) {
       displayMessage(message.Username, message.chat);
-    }
+    }*/
   } catch (err) {
     console.log(err);
   }
 }
 
 // Call refreshChat initially when the page loads
-window.addEventListener('load', refreshChat);
+const refresh =window.addEventListener('load', refreshChat);
 
 // Call refreshChat every 1 second (1000 milliseconds)
-//setInterval(refreshChat, 1000);
+//setInterval(refresh(), 1000);
 
 
 function getLastMessageTimestamp() {
@@ -109,7 +109,7 @@ function displayMessage(username, message) {
   chatContainer.appendChild(messageDiv);
 }
 function displayGroup(groups) {
-  const groupDiv = document.createElement('button');
+  const groupDiv = document.createElement('li');
 
   groupDiv.textContent = groups.GroupName;
   groupDiv.addEventListener("click",()=>{

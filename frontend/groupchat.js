@@ -2,6 +2,7 @@ const send = document.getElementById('send');
 const token = localStorage.getItem("token")
 const groupname = localStorage.getItem("groupname")
 const chatBox = document.getElementById("chatBox")
+const h2 = document.getElementById("head")
 /*async function sendMessage() {
     var messageInput = document.getElementById("message");
     var message = messageInput.value;
@@ -24,7 +25,7 @@ const chatBox = document.getElementById("chatBox")
   }
 });
       console.log(response)
-  
+     h2.innerHTML= groupname
      const participantsList = document.getElementById("participants");
       participantsList.innerHTML = ""; // Clear the previous participant list
   

@@ -7,6 +7,7 @@ const axios = require('axios')
 const User = require('./model/user')
 const Message = require('./model/message')
 const Group = require('./model/group')
+const forgotPassword = require('./model/forgotpassword')
 app.use(cors())
 
 User.hasMany(Message)
@@ -15,6 +16,9 @@ Message.belongsTo(User)
 Group.hasMany(Message)
 Message.belongsTo(Group)
 
+User.hasMany(forgotPassword)
+forgotPassword.belongsTo(User)
+
 const UserGroup = sequelize.define('UserGroup', {});
 User.belongsToMany(Group,{through:UserGroup})
 Group.belongsToMany(User,{through:UserGroup})
@@ -22,6 +26,8 @@ Group.belongsToMany(User,{through:UserGroup})
 
 app.use(Parser.json({extended:false}))
 
+const Password = require('./route/forgot')
+app.use(Password)
 
 const Signup = require('./route/signup')
 app.use(Signup)
