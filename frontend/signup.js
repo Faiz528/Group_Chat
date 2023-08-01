@@ -20,7 +20,7 @@ async function save(event){
         password
     }
     try{
-        const response = await axios.post('http://localhost:3000/signup',object)
+        const response = await axios.post('http://13.232.232.234:3000/signup',object)
         console.log(response)
         window.location.href="../HTML/login.html"
     }
