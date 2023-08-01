@@ -16,7 +16,7 @@ const h2 = document.getElementById("head")
   async function fetchParticipants() {
     try {
 
-      const response = await axios.get("http://localhost:3000/getparticipants", {
+      const response = await axios.get("http://13.232.232.234:3000/getparticipants", {
   params: {
     groupname: groupname
   },
@@ -32,7 +32,7 @@ const h2 = document.getElementById("head")
       // Loop through the response data to add each participant to the list
       addParticipantsToDOM(response.data);
       participantsList.addEventListener('click', handleDeleteButtonClick);
-      const msg = await axios.get("http://localhost:3000/chats", { params: { "groupname": groupname } },)
+      const msg = await axios.get("http://13.232.232.234:3000/chats", { params: { "groupname": groupname } },)
       console.log(msg)
       //const message = msg.data.chat
       //const username = msg.data.Username
@@ -52,7 +52,7 @@ const h2 = document.getElementById("head")
     participantInput.value = "";
     console.log(token)
     try{
-    const response = await axios.post("http://localhost:3000/addmember",{"member":participantName,"groupname":groupname})
+    const response = await axios.post("http://13.232.232.234:3000/addmember",{"member":participantName,"groupname":groupname})
     var participantsList = document.getElementById("participants");
     var newParticipant = document.createElement("li");
     newParticipant.innerText = response.data.name;
@@ -87,7 +87,7 @@ const h2 = document.getElementById("head")
   async function save(event) {
     var text = msg.value;
     try {
-      const response = await axios.post("http://localhost:3000/chats", { "msg": text ,"groupname":groupname},{
+      const response = await axios.post("http://13.232.232.234:3000/chats", { "msg": text ,"groupname":groupname},{
         headers: {
           'Authorization': token
         }
@@ -124,7 +124,7 @@ const h2 = document.getElementById("head")
   
   async function deleteParticipant(participantName) {
     try {
-      const response = await axios.post("http://localhost:3000/deleteparticipant", { "member": participantName, "groupname": groupname },{
+      const response = await axios.post("http://13.232.232.234:3000/deleteparticipant", { "member": participantName, "groupname": groupname },{
         headers: {
           'Authorization': token
         }
