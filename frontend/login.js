@@ -13,7 +13,7 @@ async function save(event)
     }
     var object ={email , password}
     try{
-        const response = await axios.post("http://13.232.232.234:3000/login",object)
+        const response = await axios.post("http://localhost:3000/login",object)
         console.log(response)
         const tokens = response.data.token
         const uname =  response.data.name

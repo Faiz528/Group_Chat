@@ -8,8 +8,24 @@ const User = require('./model/user')
 const Message = require('./model/message')
 const Group = require('./model/group')
 const forgotPassword = require('./model/forgotpassword')
+const route = express.Router()
+const multer = require('multer')
+//const upload = multer({dest:"uploads/"})
 app.use(cors())
+app.use(express.urlencoded({extended:false}))
 
+const storage = multer.diskStorage({
+  destination : function(req,file,cb){
+    return cb(null,"./uploads")
+  },
+  filename: function (req,file,cb){
+    return cb(null,`${file.originalname}`)
+  }
+})
+const upload = multer({storage})
+route.post("/upload",upload.single("fileInput"),(req,res)=>{
+
+})
 User.hasMany(Message)
 Message.belongsTo(User)
 
@@ -40,6 +56,7 @@ app.use(Chat)
 
 const GroupChat = require("./route/groupchat")
 app.use(GroupChat)
+
 
 
 sequelize.

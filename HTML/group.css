@@ -8,12 +8,21 @@ body {
     border: 1px solid #ccc;
     padding: 10px;
   }
+  #chatBox {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
 
   #user-list {
     border: 1px solid #ccc;
     padding: 10px;
   }
-
+#uploadForm{
+  position: fixed;
+    right: 50px;
+    bottom:50px;
+}
   #input-group {
     margin-top: 10px;
   }
@@ -78,7 +87,7 @@ li{
     width: fit-content;
     word-break: break-word;
     border: 0;
-    /*position:absolute;
+    /*position:absolut;e;
     left: 20px;*/
   }
   h1{
@@ -86,4 +95,7 @@ li{
     justify-content: center;
     display: flex;
     align-items: center;
+    }
+    #groupcontainer{
+      cursor:pointer;
     }

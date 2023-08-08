@@ -32,11 +32,18 @@
 
   </div>
 
-  <div id ="speak">
+  <form id ="speak">
     <input type="text" id ="msg">
-    <button type="submit" id="send">Send</button>
-</div>
+    
+    <button >Send</button>
+  </form>
+
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="fileInput" id="fileInput">
+    <button type="button" id="uploadButton">Upload File</button>
+  </form>
   <script src="../frontend/groupchat.js"></script>
   <script  src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
 </body>
 </html>

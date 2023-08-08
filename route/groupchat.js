@@ -8,6 +8,7 @@ route.post('/chats',auth.authenticate,Group.Postmsg)
 route.get('/chats',Group.Getmsg)
 route.post('/addmember',Group.AddUser)
 route.get('/getparticipants',auth.authenticate,Group.getMember)
-
+//route.post('/upload')
+route.post('/uploads',Group.Uploads)
 route.post('/deleteParticipant',auth.authenticate,Group.DeleteUser)
 module.exports= route
