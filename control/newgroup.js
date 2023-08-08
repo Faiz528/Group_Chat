@@ -22,7 +22,7 @@ exports.Uploads = (req, res) => {
   upload.single('fileInput')(req, res, function (err) {
     if (err) {
       // Handle multer error, if any
-      return res.status(400).json({ error: err.message });
+      return res.status(400).json({ error: err.message }); 
     }
     
     console.log(req.file); // Uploaded file details
