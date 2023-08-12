@@ -3,6 +3,39 @@ const User = require('../model/user');
 const Message = require('../model/message');
 const AWS = require('aws-sdk')
 const multer = require('multer')
+
+
+const http = require("http");
+const express = require("express");
+const socketIo = require("socket.io");
+
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
+
+
+io.on("connection", (socket) => {
+  console.log("A user connected.");
+
+  socket.on("disconnect", () => {
+    console.log("A user disconnected.");
+  });
+
+  socket.on("fileUploaded", (message) => {
+    // Handle the fileUploaded event
+    console.log("File uploaded:", message);
+    // You can broadcast the message to other connected clients
+    socket.broadcast.emit("fileUploaded", message);
+  });
+
+  socket.on("messageSent", (message) => {
+    // Handle the messageSent event
+    console.log("Message sent:", message);
+    // You can broadcast the message to other connected clients
+    socket.broadcast.emit("messageSent", message);
+  });
+});
+
 //const upload = multer({dest:"uploads/"})
 
 //const multer = require('multer');
@@ -89,11 +122,11 @@ exports.getMember = async (req, res, next) => {
     const { groupname } = req.query;
     const group = await Group.findOne({ where: { GroupName: groupname } });
     const members = await group.getUsers();
-
+    const admin = await User.findOne({where:{id:group.AdminId}})
     const loggedInUserId = req.user.id;
     const filteredMembers = members.filter((member) => member.id !== loggedInUserId);
 
-    res.json(filteredMembers);
+    res.json({members:filteredMembers,admin:admin});
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'Internal server error' });
@@ -160,7 +193,7 @@ exports.DeleteUser = async (req, res, next) => {
 
     const isUserCreator = group.AdminId === user.id;
     if (!isUserCreator) {
-      return res.status(403).json({ error: 'You are not authorized to delete participants from this group' });
+      return res.status(403).json({ error: 'You are not the admin of this group' });
     }
 
     const userToDelete = await User.findOne({ where: { Username: member } });
@@ -177,7 +210,7 @@ exports.DeleteUser = async (req, res, next) => {
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
-exports.Upload = async (req, res, next) => {
+/*exports.Upload = async (req, res, next) => {
   try {
     const {fileName,fileType} = req.body
   const Stringify = JSON.stringify(fileName)
@@ -223,4 +256,4 @@ function uploadToS3(data,filename)
 
     })
    
-}
+}*/

@@ -99,3 +99,10 @@ li{
     #groupcontainer{
       cursor:pointer;
     }
+#admin
+{
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

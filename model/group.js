@@ -10,6 +10,7 @@ const Group = sequelize.define('group',{
     GroupName:{
          type : Sequelize.STRING,
          allowNull : false,
+         unique : true
     
     },
     AdminId:{
